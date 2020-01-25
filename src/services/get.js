@@ -41,4 +41,4 @@ function Get (url) {
     return { data, isLoading, error }
 }
 
-export default Api;
+export default Get;

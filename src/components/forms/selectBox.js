@@ -1,9 +1,9 @@
 import React from 'react';
 
-import getService from '../../services/get';
+import GetService from '../../services/Get';
 
 export default (props) => {
-    const {data, isLoading, error } = getService(props.api);
+    const {data, isLoading, error } = GetService(props.api);
 
     if(error){
       return <p>{error.message}</p>

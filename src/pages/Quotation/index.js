@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import SelectBox from '../../components/forms/selectBox';
+import SelectBox from '../../components/forms/SelectBox';
+import Result from './Result';
 
 function Quotation () {  
   
@@ -10,7 +11,7 @@ function Quotation () {
         <div>
           <SelectBox api={'/base/destinations'} />
 
-          
+          <Result api={'/quotation'}/>
         </div>
     </>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import postService from '../../services/post';
+import postService from '../../services/Post';
 
 export default (props) => {
     const body = {

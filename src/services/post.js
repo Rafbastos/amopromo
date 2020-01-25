@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-function Get (url) {
+function Post (url, body) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
-  const [body, setBody] = useState([]);
   const [error, setError] = useState(null);
-  const accessData =   process.env.REACT_APP_USER_SERVICE + ":" + process.env.REACT_APP_PASSWORD_SERVICE;
-
+  const accessData = process.env.REACT_APP_USER_SERVICE + ":" + process.env.REACT_APP_PASSWORD_SERVICE;
 
     useEffect(() => {
       setIsLoading(true);
@@ -44,4 +42,4 @@ function Get (url) {
     return { data, isLoading, error }
 }
 
-export default Api;
+export default Post;
