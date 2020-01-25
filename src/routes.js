@@ -1,12 +1,14 @@
 import React from 'react';
-import { Router, Route, Redirect, hashHistory } from 'react-router';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Quotation from './pages/Quotation'
 
-export default props => (
-    <Router history={hashHistory}>
-        <Route path='/' component={Quotation} />
-        <Route path='/quotation' component={Quotation} />
-        <Redirect from='*' to='/quotation' />
-    </Router>
-)
+export default function Routers() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path='/' exact component={Quotation} />
+      </Switch>
+    </BrowserRouter>
+  )
+}

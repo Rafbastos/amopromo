@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Loghook (url, method) {
+function Get (url) {
 
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -15,8 +15,8 @@ function Loghook (url, method) {
       let auth = 'Basic ' + encoded;
       h.append('Authorization', auth);
 
-      let req = new Request(url, {
-        method: method,
+      let req = new Request(process.env.REACT_APP_BASE_URL+url, {
+        method: 'GET',
         headers: h,
         credentials: 'same-origin'
       });
@@ -41,4 +41,4 @@ function Loghook (url, method) {
     return { data, isLoading, error }
 }
 
-export default Loghook;
+export default Api;

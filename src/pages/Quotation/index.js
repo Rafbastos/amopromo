@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function Quotation () {
+import SelectBox from '../../components/forms/selectBox';
 
+function Quotation () {  
+  
   return (
     <>
       <h1>Quotação</h1>
+        <div>
+          <SelectBox api={'/base/destinations'} />
+
+          
+        </div>
     </>
-  )
+  );
+    
 }
+
+export default Quotation;
