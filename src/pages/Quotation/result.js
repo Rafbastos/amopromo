@@ -6,7 +6,7 @@ export default (props) => {
     const body = {
         "coverage_begin": "2020-11-04",
         "coverage_end": "2020-11-10",
-        "destination": 2,
+        "destination": 1,
         "coverages": [
           1
         ]
@@ -23,7 +23,25 @@ export default (props) => {
 
     return (
       <div>
-        {data}
+        {data.map(quot => (
+          <ul key={quot.id}>
+            <li>
+              {quot.product_name}
+            </li>
+            <li>
+              {quot.net_price}
+            </li>
+            <li>
+              {quot.elder_net_price}
+            </li>
+            <li>
+              {quot.currency}
+            </li>
+            <li>
+              {quot.exchange_rate}
+            </li>
+          </ul>
+        ))}
       </div>
     )
 }

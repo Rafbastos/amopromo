@@ -18,7 +18,7 @@ function Post (url, body) {
       let req = new Request(process.env.REACT_APP_BASE_URL+url, {
         method: 'POST',
         headers: h,
-        body: body,
+        body: JSON.stringify(body),
         credentials: 'same-origin'
       });
 
