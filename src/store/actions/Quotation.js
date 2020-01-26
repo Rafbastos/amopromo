@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export async function SendQuotation (values) {
+  const api = process.env.REACT_APP_BASE_URL.toString();
   const accessData = process.env.REACT_APP_USER_SERVICE + ":" + process.env.REACT_APP_PASSWORD_SERVICE;
   let encoded = window.btoa(accessData);
   let auth = 'Basic ' + encoded;
@@ -17,8 +18,8 @@ export async function SendQuotation (values) {
     ]
   }
 
-  const requestQuotation = await axios.post('https://demo.assisttrip.com.br/api/quotation', body, config);
-  const requestProduct = await axios.get('https://demo.assisttrip.com.br/api/base/products', config);
+  const requestQuotation = await axios.post(api+'/quotation', body, config);
+  const requestProduct = await axios.get(api+'/base/products', config);
 
   return {
     type: 'GET_QUOTATION',
