@@ -1,4 +1,5 @@
 import React from 'react';
+import { Field } from 'redux-form';
 
 import GetService from '../../services/Get';
 
@@ -15,9 +16,14 @@ export default (props) => {
 
     return (
       <div>
-        {data.map(location => (
-          <div key={location.id}>{location.name}</div>
-        ))}
+        <Field name={props.name} component="select">
+          <option value="">Selecione um destino</option>
+          {data.map(location => (
+            <option value={location.id} key={location.id}>
+              {location.name}
+            </option>
+          ))}
+        </Field>
       </div>
     )
 }

@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-
-import Quotation from './Quotation';
+import { reducer as formReducer } from 'redux-form';
+import QuotationReducer from './QuotationReducer';
 
 export default combineReducers({
-    Quotation,
+    QuotationReducer,
+    form: formReducer
 })

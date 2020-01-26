@@ -1,21 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import SelectBox from '../../components/forms/SelectBox';
-import Result from './Result';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-function Quotation () {  
-  
-  return (
-    <>
-      <h1>Quotação</h1>
+import { SendQuotation } from '../../store/actions/Quotation';
+
+import Form from './FormQuotation';
+
+const Quotation  = ({quotations,products, SendQuotation}) => {
+    const checkId = '';
+    return (
+      <>
+        <h1>Quotação</h1>
         <div>
-          <SelectBox api={'/base/destinations'} />
+          <ul>
+            <Form onSubmit={SendQuotation} />
+            
+            {quotations.map(quot => (
+              <li key={ quot.product_id}>
+                { quot.product_id }
+              </li>
+            ))}
 
-          <Result api={'/quotation'}/>
+            {products.map(prod => (
+              
+              <li key={ prod.id}>
+                { prod.id }
+              </li>
+            ))}
+          </ul>
         </div>
-    </>
-  );
-    
+      </>
+    );
 }
 
-export default Quotation;
+const mapStateToProps = state => ({
+  quotations: state.QuotationReducer.quotation,
+  products: state.QuotationReducer.product
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({SendQuotation}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Quotation);
