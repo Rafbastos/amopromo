@@ -5,15 +5,17 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import Quotation from './pages/quotation'
+import Purchase from './pages/purchase'
 
 export default function Routers() {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Provider store={store}>
-          <Route path='/' exact component={Quotation} />
-        </Provider>
-      </Switch>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Switch>
+            <Route path='/quotation' component={Quotation} />
+            <Route path='/purchase' component={Purchase} />
+        </Switch>
+      </BrowserRouter>
+    </Provider>
   )
 }

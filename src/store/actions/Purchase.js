@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function SendQuotation (values) {
+export async function CreatePurchase (values) {
   const api = process.env.REACT_APP_BASE_URL.toString();
   const accessData = process.env.REACT_APP_USER_SERVICE + ":" + process.env.REACT_APP_PASSWORD_SERVICE;
   let encoded = window.btoa(accessData);
@@ -18,12 +18,9 @@ export async function SendQuotation (values) {
     ]
   }
 
-  const requestQuotation = await axios.post(api+'/quotation', body, config);
-  const requestProduct = await axios.get(api+'/base/products', config);
+  //const requestQuotation = await axios.post(api+'/quotation', body, config);
 
   return {
-    type: 'GET_QUOTATION',
-    payloadQuotation: requestQuotation,
-    payloadProduct: requestProduct,
+    type: 'CREATE_PURCHASE',
   };
 }
