@@ -9,14 +9,7 @@ export async function CreatePurchase (values) {
     headers: {'Accept': 'application/json', 'Authorization': auth},
   };
   
-  const body = {
-    coverage_begin: values.begin.toString(),
-    coverage_end: values.end.toString(),
-    destination: parseInt(values.destination),
-    coverages: [
-      1
-    ]
-  }
+
 
   //const requestQuotation = await axios.post(api+'/quotation', body, config);
 
