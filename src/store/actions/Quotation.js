@@ -8,7 +8,7 @@ export async function SendQuotation (values) {
   var config = {
     headers: {'Accept': 'application/json', 'Authorization': auth},
   };
-  console.log(values);
+
   const body = {
     coverage_begin: values.begin.toString(),
     coverage_end: values.end.toString(),

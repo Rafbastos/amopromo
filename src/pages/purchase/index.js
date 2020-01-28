@@ -24,4 +24,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({CreatePurchase}, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Purchase);
+export default connect(null, mapDispatchToProps)(Purchase);
