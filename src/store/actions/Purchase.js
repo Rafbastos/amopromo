@@ -9,7 +9,7 @@ export async function CreatePurchase (values) {
     headers: {'Accept': 'application/json', 'Authorization': auth},
   };
   
-
+  console.log(values);
 
   //const requestQuotation = await axios.post(api+'/quotation', body, config);
 

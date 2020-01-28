@@ -3,12 +3,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { CreatePurchase } from '../../store/actions/Purchase';
+import { CreatePurchase, init } from '../../store/actions/Purchase';
 
 import Form from './FormPurchase';
 
 const Purchase  = ({CreatePurchase}) => {
-    const checkId = '';
     return (
       <>
         <h1>Realizar Pedido</h1>

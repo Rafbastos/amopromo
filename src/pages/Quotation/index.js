@@ -8,7 +8,7 @@ import { SendQuotation } from '../../store/actions/Quotation';
 import Form from './FormQuotation';
 
 const Quotation  = ({quotations,products, SendQuotation}) => {
-    const checkId = '';
+
     return (
       <>
         <h1>Quotação</h1>

@@ -1,78 +1,58 @@
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
-var i = 1;
-class FormQuotation extends Component {  
-  
-  state = {
-    coverages: [],
-    
-  }
+import { reduxForm, Field, FieldArray } from 'redux-form';
 
-  addNum(){
-    i = i + 1;
-    return i;
-  }
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} type={type} placeholder={label}/>
+      {touched && error && <span>{error}</span>}
+    </div>
+  </div>
+)
 
-  removeNum(){
-    i = i - 1;
-    return i;
-  }
+const renderInsureds = ({ fields }) => (
+  <ul>
+    <li>
+      <button type="button" onClick={() => fields.push({})}>Adicionar Assegurado</button>
+    </li>
+    {fields.map((member, index) =>
+      <li key={index}>
+        <button type="button" title="Remover Assegurado" onClick={() => fields.remove(index)}>Remover Assegurado</button>
+        <h4>Assegurado Número{index + 1}</h4>
 
-  addCoverage(e, concat){
-    this.setState({coverages:[...this.state.coverages, { firstName: "first_Name"+i, last_name: "last_name"+i, date_of_birth:"date_of_birth"+i, cpf:"cpf"+i}]});
-    this.addNum();
-  }
+        <Field name={`${member}.firstName`} type="text" component={renderField} label="Nome"/>
+        <Field name={`${member}.lastName`} type="text" component={renderField} label="Sobrenome"/>
+        <Field name={`${member}.date_of_birth`} type="date" component={renderField} label="Nascimento"/>
+        <Field name={`${member}.cpf`} type="text" component={renderField} label="CPF"/>
+      </li>
+    )}
+  </ul>
+)
 
-  removeCoverage(e, index){
-    this.setState(this.state.coverages.splice(index, 1));
-    this.removeNum();
-  }
-
-
+class FormPurchase extends Component {  
   render(){
-
     const { handleSubmit } = this.props;
 
     return (
       <>
         <form onSubmit={handleSubmit} >
           <label>Nome:</label>
-          <Field name="name" component="input" type="text" />
+          <Field name="contact.name" component="input" type="text" />
           <label>Email</label>
-          <Field name="email" component="input" type="text" />
+          <Field name="contact.email" component="input" type="text" />
           <label>Telefone</label>
-          <Field name="phone" component="input" type="text" />
+          <Field name="contact.phone" component="input" type="text" />
           <label>Endereço</label>
-          <Field name="address" component="input" type="text" />
+          <Field name="address.address" component="input" type="text" />
           <label>CEP</label>
-          <Field name="cep" component="input" type="text" />
+          <Field name="address.cep" component="input" type="text" />
           <label>Cidade</label>
-          <Field name="city" component="input" type="text" />
+          <Field name="address.city" component="input" type="text" />
           <label>Estado</label>
-          <Field name="state" component="input" type="text" />
+          <Field name="address.state" component="input" type="text" />
 
-          <div>Segurados</div><button type="button" onClick={(e) => this.addCoverage(e, i)} >Adicionar Assegurado</button>
-          {
-            this.state.coverages.map((coverage, index)=>{
-              return(
-                <div key={index}>
-                  <label>ID</label>
-                  <Field name="external_id" component="input" type="text" />
-                  <label>Nome</label>
-                  <Field name={coverage.firstName} component="input" type="text" />
-                  <label>Sobrenome</label>
-                  <Field name={coverage.last_name} component="input" type="text" />
-                  <label>Nascimento</label>
-                  <Field name={coverage.date_of_birth} component="input" type="text" />
-                  <label>CPF</label>
-                  <Field name={coverage.cpf} component="input" type="text" />
-                  <button type="button" onClick={(e) => this.removeCoverage(e, index)} >Remover Assegurado</button>
-                  
-                </div>
-              )
-            })
-          }
-         
+          <FieldArray name="insureds" component={renderInsureds}/>
           <button type='submit'>Consultar</button>
         </form>
       </>
@@ -81,4 +61,4 @@ class FormQuotation extends Component {
 
 }
 
-export default reduxForm({form: 'FormQuotation'})(FormQuotation);
+export default reduxForm({form: 'FormPurchase'})(FormPurchase);

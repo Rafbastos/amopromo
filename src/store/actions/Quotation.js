@@ -13,9 +13,7 @@ export async function SendQuotation (values) {
     coverage_begin: values.begin.toString(),
     coverage_end: values.end.toString(),
     destination: parseInt(values.destination),
-    coverages: [
-      1
-    ]
+    coverages: [1]
   }
 
   const requestQuotation = await axios.post(api+'/quotation', body, config);

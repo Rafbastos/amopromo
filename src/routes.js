@@ -12,7 +12,7 @@ export default function Routers() {
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
-            <Route path='/quotation' component={Quotation} />
+            <Route path='/quotation' exact component={Quotation} />
             <Route path='/purchase' component={Purchase} />
         </Switch>
       </BrowserRouter>
