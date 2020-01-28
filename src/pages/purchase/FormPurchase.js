@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field, FieldArray } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
@@ -92,11 +93,14 @@ class FormPurchase extends Component {
             <FieldArray name="insureds" component={renderInsureds}/>
           </Form.Row>
 
-          <Button variant="primary" type="submit">
-            Pesquisar
+          <Button variant="primary" type="submit" className="mr-10">
+            Comprar
           </Button>
-
-          
+          <Link to="/quotation">
+            <Button variant="primary" type="button">
+              Voltar
+            </Button>
+          </Link>
         </Form>
       </>
     )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 import SelectDestination from '../../components/forms/SelectBox';
 
 import Form from 'react-bootstrap/Form'
@@ -26,10 +27,15 @@ class FormQuotation extends Component {
             <Field name="end" className='form-control' component="input" type="date" />
           </Form.Group>
         </Form.Row>
-
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className="mr-10">
           Pesquisar
         </Button>
+
+        <Link to="/purchase">
+          <Button variant="primary" type="button">
+            Comprar
+          </Button>
+        </Link>
       </Form>
     )
   }
