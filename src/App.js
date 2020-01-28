@@ -1,13 +1,16 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container'
 
 import Routes from './routes'
+import Header from './template/Header'
 
 function App() {
   
   return (
-    <div className="App">
+    <Container>
+      <Header />
       <Routes />
-    </div>
+    </Container>
   );
 }
 
